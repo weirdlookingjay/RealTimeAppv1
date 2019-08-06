@@ -24,6 +24,8 @@ Route::group([
     Route::post('refresh', 'AuthController@refresh');
     Route::post('me', 'AuthController@me');
     Route::post('payload', 'AuthController@');
+
+    Route::post('signup', 'AuthController@signup');
     });
 
 
