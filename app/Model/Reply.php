@@ -5,7 +5,7 @@ namespace App\Model;
 
 
 use Illuminate\Database\Eloquent\Model;
-
+use App\User;
 
 class Reply extends Model
 {
@@ -23,6 +23,6 @@ class Reply extends Model
 
     public function like()
     {
-        return $this->hasMany(Like::class);
+        return $this->hasMany(Likes::class);
     }
 }

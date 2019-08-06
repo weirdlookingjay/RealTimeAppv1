@@ -13,9 +13,4 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::group([
-    'middleware' => 'api',
-    'prefix' => 'auth'
-], function() {
-    Route::post('login', 'AuthController@login');
-});
+Route::apiResource('/question', 'QuestionController');

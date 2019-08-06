@@ -1909,23 +1909,37 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      drawer: false,
-      links: [{
-        icon: 'dashboard',
-        text: 'Dashboard',
-        route: '/'
-      }, {
-        icon: 'folder',
-        text: 'My Projects',
-        route: '/projects'
-      }, {
-        icon: 'person',
-        text: 'Team',
-        route: '/team'
-      }]
+      drawer: false
     };
   }
 });
@@ -1974,6 +1988,15 @@ __webpack_require__.r(__webpack_exports__);
         password: null
       }
     };
+  },
+  methods: {
+    login: function login() {
+      axios.post('/api/auth/login', this.form).then(function (res) {
+        return console.log(res.data);
+      })["catch"](function (error) {
+        return console.log(error.response.data);
+      });
+    }
   }
 });
 
@@ -37323,9 +37346,9 @@ var render = function() {
           }),
           _vm._v(" "),
           _c("v-toolbar-title", { staticClass: "text-uppercase" }, [
-            _c("span", { staticClass: "blue--text" }, [_vm._v("Todo")]),
+            _c("span", { staticClass: "blue--text" }, [_vm._v("Sand")]),
             _vm._v(" "),
-            _c("span", [_vm._v("App")])
+            _c("span", [_vm._v("Box")])
           ])
         ],
         1
@@ -37400,6 +37423,87 @@ var render = function() {
                   )
                 ],
                 1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-list-tile",
+                { attrs: { router: "", to: "/login" } },
+                [
+                  _c(
+                    "v-list-tile-action",
+                    [
+                      _c("v-icon", { staticClass: "white--text" }, [
+                        _vm._v("chat")
+                      ])
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-list-tile-content",
+                    [
+                      _c("v-list-tile-title", { staticClass: "white--text" }, [
+                        _vm._v("Forum")
+                      ])
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-list-tile",
+                { attrs: { router: "", to: "/login" } },
+                [
+                  _c(
+                    "v-list-tile-action",
+                    [
+                      _c("v-icon", { staticClass: "white--text" }, [
+                        _vm._v("question_answer")
+                      ])
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-list-tile-content",
+                    [
+                      _c("v-list-tile-title", { staticClass: "white--text" }, [
+                        _vm._v("Questions")
+                      ])
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-list-tile",
+                { attrs: { router: "", to: "/login" } },
+                [
+                  _c(
+                    "v-list-tile-action",
+                    [
+                      _c("v-icon", { staticClass: "white--text" }, [
+                        _vm._v("list")
+                      ])
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-list-tile-content",
+                    [
+                      _c("v-list-tile-title", { staticClass: "white--text" }, [
+                        _vm._v("Category")
+                      ])
+                    ],
+                    1
+                  )
+                ],
+                1
               )
             ],
             1
@@ -37439,12 +37543,11 @@ var render = function() {
       _c(
         "v-form",
         {
-          model: {
-            value: _vm.valid,
-            callback: function($$v) {
-              _vm.valid = $$v
-            },
-            expression: "valid"
+          on: {
+            submit: function($event) {
+              $event.preventDefault()
+              return _vm.login($event)
+            }
           }
         },
         [
