@@ -16,6 +16,6 @@
             </v-app>
         </div>
 
-        <script src="js/app.js"></script>
+        <script src="http://192.168.70.18:8000/js/app.js"></script>
     </body>
 </html>
