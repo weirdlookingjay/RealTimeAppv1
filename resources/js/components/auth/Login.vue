@@ -16,7 +16,7 @@ type="password"
 required
 ></v-text-field>
 <span class="red--text" v-if="errors.password">{{errors.password[0]}}</span>
-
+<!--
 <v-btn
 color="green"
 type="submit"
@@ -25,7 +25,7 @@ type="submit"
 <router-link to="/signup">
 <v-btn color="blue">Sign Up</v-btn>
 </router-link>
-
+-->
 </v-form>
 </v-container>
 </template>
