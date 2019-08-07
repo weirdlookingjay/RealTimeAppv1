@@ -10,48 +10,12 @@
 
 <v-navigation-drawer v-model="drawer" app class="primary">
 <v-list>
-<v-list-tile router to="/">
+<v-list-tile v-for="link in links" :key="link.text" :to="link.to" v-if="link.show">
 <v-list-tile-action>
-<v-icon class="white--text">dashboard</v-icon>
+<v-icon class="white--text">{{ link.icon }}</v-icon>
 </v-list-tile-action>
 <v-list-tile-content>
-<v-list-tile-title class="white--text">Dashboard</v-list-tile-title>
-</v-list-tile-content>
-</v-list-tile>
-
-<v-list-tile router to="/login">
-<v-list-tile-action>
-<v-icon class="white--text">power_settings_new</v-icon>
-</v-list-tile-action>
-<v-list-tile-content>
-<v-list-tile-title class="white--text">Login</v-list-tile-title>
-</v-list-tile-content>
-</v-list-tile>
-
-<v-list-tile router to="/login">
-<v-list-tile-action>
-<v-icon class="white--text">chat</v-icon>
-</v-list-tile-action>
-<v-list-tile-content>
-<v-list-tile-title class="white--text">Forum</v-list-tile-title>
-</v-list-tile-content>
-</v-list-tile>
-
-<v-list-tile router to="/login">
-<v-list-tile-action>
-<v-icon class="white--text">question_answer</v-icon>
-</v-list-tile-action>
-<v-list-tile-content>
-<v-list-tile-title class="white--text">Questions</v-list-tile-title>
-</v-list-tile-content>
-</v-list-tile>
-
-<v-list-tile router to="/login">
-<v-list-tile-action>
-<v-icon class="white--text">list</v-icon>
-</v-list-tile-action>
-<v-list-tile-content>
-<v-list-tile-title class="white--text">Category</v-list-tile-title>
+<v-list-tile-title class="white--text">{{ link.text }}</v-list-tile-title>
 </v-list-tile-content>
 </v-list-tile>
 
@@ -64,9 +28,22 @@
 export default {
 data() {
 return {
-drawer: false
+drawer: false,
+links: [
+{ icon: 'dashboard', text: 'Dashboard', to: '/', show: User.loggedIn()},
+{ icon: 'power_settings_new', text: 'Login', to: '/login', show: !User.loggedIn()},
+{ icon: 'exit_to_app', text: 'Logout', to: '/logout', show: User.loggedIn()},
+{ icon: 'chat', text: 'Forum', to: '/forum', show: true},
+{ icon: 'question_answer', text: 'Questions', to: '/ask', show: User.loggedIn()},
+{ icon: 'list', text: 'Category', to: '/category', show: !User.loggedIn()},
+]
 
 }
+},
+created() {
+    EventBus.$on('logout', () => {
+        User.logout()
+})
 }
 
 }
