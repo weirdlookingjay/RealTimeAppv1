@@ -75755,7 +75755,7 @@ function () {
       axios.post('/api/auth/login', data).then(function (res) {
         return _this.responseAfterLogin(res);
       })["catch"](function (error) {
-        return _this.errors = error.response.data.errors;
+        return _this.errors = error.response.data;
       });
     }
   }, {
