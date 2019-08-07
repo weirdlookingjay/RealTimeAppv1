@@ -1986,7 +1986,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -37624,7 +37623,11 @@ var render = function() {
             ? _c("span", { staticClass: "red--text" }, [
                 _vm._v(_vm._s(_vm.errors.password[0]))
               ])
-            : _vm._e()
+            : _vm._e(),
+          _vm._v(" "),
+          _c("v-btn", { attrs: { color: "green", type: "submit" } }, [
+            _vm._v("LOGIN")
+          ])
         ],
         1
       )
